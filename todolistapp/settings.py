@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todos.apps.TodosConfig',
-    'authentication.apps.AuthenticationConfig'
+    'authentication.apps.AuthenticationConfig',
     'rest_framework'
 ]
 
@@ -72,6 +72,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'todolistapp.wsgi.application'
 
+
+AUTH_USER_MODEL="authentication.User"
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
