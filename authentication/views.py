@@ -3,13 +3,14 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
 from django.contrib.auth import authenticate
+from authentication.jwtauthenticate import JWTAuthentication
 
 from authentication.serializers import LoginSerializer, RegisterSerializer
 
 
 class AuthUserAPIView(GenericAPIView):
-
-    permission_classes = (permissions.IsAuthenticated)
+    authentication_classes = [JWTAuthentication]
+    permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request):
         user = request.user
@@ -30,7 +31,7 @@ class RegisterView(GenericAPIView):
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 class LoginAPIView(GenericAPIView):
-
+    
     serializer_class = LoginSerializer
     def post(self, request):
 
