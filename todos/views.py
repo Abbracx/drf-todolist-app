@@ -30,7 +30,7 @@ class DetailTodoAPIView(RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
-    lookup_fields = 'id'
+    lookup_field = 'id'
 
     def get_queryset(self):
         return Todo.objects.filter(owner=self.request.user)
